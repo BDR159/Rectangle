@@ -40,7 +40,7 @@ class StageUtil {
     }
     
     static func isStageStripVisible(_ screen: NSScreen? = .main) -> Bool {
-        guard let screen else {
+        guard let screen = screen else {
             return false
         }
         let infos = WindowUtil.getWindowList().filter { info in
@@ -63,7 +63,7 @@ class StageUtil {
     
     private static func getStageStripWindowGroups(_ screen: NSScreen? = .main) -> [[CGWindowID]] {
         guard
-            let screen,
+            let screen = screen,
             let appElement = AccessibilityElement("com.apple.WindowManager"),
             let stripElements = appElement.getChildElements(.group),
             let stripElement = (stripElements.first {

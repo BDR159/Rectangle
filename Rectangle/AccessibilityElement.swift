@@ -235,7 +235,7 @@ class AccessibilityElement {
     
     var titleBarFrame: CGRect? {
         guard
-            let windowElement,
+            let windowElement = windowElement,
             case let windowFrame = windowElement.frame,
             windowFrame != .null,
             let closeButtonFrame = windowElement.getChildElement(.closeButton)?.frame,

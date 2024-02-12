@@ -16,7 +16,7 @@ class WindowUtil {
         }
         var infos = [WindowInfo]()
         var rawInfos: CFArray?
-        if let ids {
+        if let ids = ids {
             let values = UnsafeMutablePointer<UnsafeRawPointer?>.allocate(capacity: ids.count)
             for (i, id) in ids.enumerated() {
                 values[i] = UnsafeRawPointer(bitPattern: UInt(id))
@@ -26,7 +26,7 @@ class WindowUtil {
         } else {
             rawInfos = CGWindowListCopyWindowInfo([all ? .optionAll : .optionOnScreenOnly, .excludeDesktopElements], kCGNullWindowID)
         }
-        if let rawInfos {
+        if let rawInfos = rawInfos {
             let count = rawInfos.getCount()
             for i in 0..<count {
                 let rawInfo = rawInfos.getValue(i) as CFDictionary
@@ -42,7 +42,7 @@ class WindowUtil {
                 }
                 let pid = pid_t(truncating: rawPid)
                 var processName: String?
-                if let rawProcessName {
+                if let rawProcessName = rawProcessName {
                     processName = String(rawProcessName)
                 }
                 let info = WindowInfo(id: id, level: level, frame: frame, pid: pid, processName: processName)

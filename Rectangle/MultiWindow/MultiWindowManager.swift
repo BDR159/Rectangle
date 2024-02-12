@@ -154,7 +154,7 @@ class MultiWindowManager {
 
         rect.origin.x = screenFrame.origin.x + delta * CGFloat(index)
         rect.origin.y = screenFrame.origin.y + delta * CGFloat(index)
-        if let size {
+        if let size = size {
             rect.size.width = size.width
             rect.size.height = size.height
         }
