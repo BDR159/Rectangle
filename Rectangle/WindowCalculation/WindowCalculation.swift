@@ -246,7 +246,11 @@ class WindowCalculationFactory {
      .bottomRightEighth: bottomRightEighthCalculation,
      .specified: specifiedCalculation,
      .leftTodo: leftTodoCalculation,
-     .rightTodo: rightTodoCalculation
+     .rightTodo: rightTodoCalculation,
+     .largerX: changeSizeCalculation,
+     .largerY: changeSizeCalculation,
+     .smallerX: changeSizeCalculation,
+     .smallerY: changeSizeCalculation,
         //     .restore: nil
     ]
 }

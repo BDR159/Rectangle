@@ -84,7 +84,11 @@ enum WindowAction: Int, Codable {
     leftTodo = 68,
     rightTodo = 69,
     cascadeActiveApp = 70,
-    centerProminently = 71
+    centerProminently = 71,
+    largerX = 72,
+    largerY = 73,
+    smallerX = 74,
+    smallerY = 75
 
     // Order matters here - it's used in the menu
     static let active = [leftHalf, rightHalf, centerHalf, topHalf, bottomHalf,
@@ -93,8 +97,8 @@ enum WindowAction: Int, Codable {
                          maximize, almostMaximize, maximizeHeight, smaller, larger, center, centerProminently, restore,
                          nextDisplay, previousDisplay,
                          moveLeft, moveRight, moveUp, moveDown,
-                         firstFourth, secondFourth, thirdFourth, lastFourth, firstThreeFourths, lastThreeFourths,
-                         topLeftSixth, topCenterSixth, topRightSixth, bottomLeftSixth, bottomCenterSixth, bottomRightSixth,
+                         firstFourth, secondFourth, thirdFourth, lastFourth, firstThreeFourths, lastThreeFourths, smallerY, largerY,
+                         topLeftSixth, topCenterSixth, topRightSixth, bottomLeftSixth, bottomCenterSixth, bottomRightSixth, smallerX, largerX,
                          specified, reverseAll,
                          topLeftNinth, topCenterNinth, topRightNinth,
                          middleLeftNinth, middleCenterNinth, middleRightNinth,
@@ -207,6 +211,10 @@ enum WindowAction: Int, Codable {
         case .rightTodo: return "rightTodo"
         case .cascadeActiveApp: return "cascadeActiveApp"
         case .centerProminently: return "centerProminently"
+        case .largerX: return "largerX"
+        case .largerY: return "largerY"
+        case .smallerX: return "smallerX"
+        case .smallerY: return "smallerY"
         }
     }
 
@@ -343,6 +351,18 @@ enum WindowAction: Int, Codable {
             return nil
         case .centerProminently:
             return nil
+        case .largerX:
+            key = "0md-J3-cbU.title"
+            value = "Larger X"
+        case .largerY:
+            key = "epg-YE-pkc.title"
+            value = "Larger Y"
+        case .smallerX:
+            key = "z0I-QW-pee.title"
+            value = "Smaller X"
+        case .smallerY:
+            key = "Qvc-WV-qHX.title"
+            value = "Smaller Y"
         }
 
         return NSLocalizedString(key, tableName: "Main", value: value, comment: "")
@@ -440,7 +460,11 @@ enum WindowAction: Int, Codable {
         case .previousDisplay: return NSImage(imageLiteralResourceName: "prevDisplayTemplate")
         case .nextDisplay: return NSImage(imageLiteralResourceName: "nextDisplayTemplate")
         case .larger: return NSImage(imageLiteralResourceName: "makeLargerTemplate")
+        case .largerX: return NSImage(imageLiteralResourceName: "makeLargerTemplate")
+        case .largerY: return NSImage(imageLiteralResourceName: "makeLargerTemplate")
         case .smaller: return NSImage(imageLiteralResourceName: "makeSmallerTemplate")
+        case .smallerX: return NSImage(imageLiteralResourceName: "makeSmallerTemplate")
+        case .smallerY: return NSImage(imageLiteralResourceName: "makeSmallerTemplate")
         case .bottomHalf: return NSImage(imageLiteralResourceName: "bottomHalfTemplate")
         case .topHalf: return NSImage(imageLiteralResourceName: "topHalfTemplate")
         case .center: return NSImage(imageLiteralResourceName: "centerTemplate")
@@ -540,7 +564,7 @@ enum WindowAction: Int, Codable {
             return Defaults.applyGapsToMaximize.userDisabled ? .none : .both;
         case .maximizeHeight:
             return Defaults.applyGapsToMaximizeHeight.userDisabled ? .none : .vertical;
-        case .almostMaximize, .previousDisplay, .nextDisplay, .larger, .smaller, .center, .centerProminently, .restore, .specified, .reverseAll, .tileAll, .cascadeAll, .cascadeActiveApp:
+        case .almostMaximize, .previousDisplay, .nextDisplay, .larger, .smaller, .center, .centerProminently, .restore, .specified, .reverseAll, .tileAll, .cascadeAll, .cascadeActiveApp, .largerX, .largerY, .smallerX, .smallerY:
             return .none
         }
     }

@@ -62,7 +62,12 @@ class PrefsViewController: NSViewController {
     @IBOutlet weak var bottomLeftSixthShortcutView: MASShortcutView!
     @IBOutlet weak var bottomCenterSixthShortcutView: MASShortcutView!
     @IBOutlet weak var bottomRightSixthShortcutView: MASShortcutView!
-
+    
+    // make {smaller | larger } { x | y}
+    @IBOutlet weak var makeSmallerYShortcutView: MASShortcutView!
+    @IBOutlet weak var makeLargerYShortcutView: MASShortcutView!
+    @IBOutlet weak var makeSmallerXShortcutView: MASShortcutView!
+    @IBOutlet weak var makeLargerXShortcutView: MASShortcutView!
     
     @IBOutlet weak var showMoreButton: NSButton!
     @IBOutlet weak var additionalShortcutsStackView: NSStackView!
@@ -109,7 +114,11 @@ class PrefsViewController: NSViewController {
             .topRightSixth: topRightSixthShortcutView,
             .bottomLeftSixth: bottomLeftSixthShortcutView,
             .bottomCenterSixth: bottomCenterSixthShortcutView,
-            .bottomRightSixth: bottomRightSixthShortcutView
+            .bottomRightSixth: bottomRightSixthShortcutView,
+            .smallerY: makeSmallerYShortcutView,
+            .largerY: makeLargerYShortcutView,
+            .smallerX: makeSmallerXShortcutView,
+            .largerX: makeLargerXShortcutView
         ]
         
         for (action, view) in actionsToViews {
